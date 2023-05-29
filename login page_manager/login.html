@@ -1,0 +1,140 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Login - </title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <!-- //Meta tag Keywords -->
+    <link rel="icon" type="image/png" href="../logo.png"/>
+    <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <!--/Style-CSS -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <!--//Style-CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all">
+
+</head>
+
+<body>
+    <div class="w3l-signinform">
+        <!-- container -->
+        <div class="wrapper">
+            <!-- main content -->
+            <div class="w3l-form-info">
+                <div class="w3_info">
+                    <h1>Welcome Back</h1>
+                    <p class="sub-para"></p>
+                    <h2>Log In</h2>
+                    <form action="#" method="post">
+                        <div class="input-group">
+                            <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                            <input type="email" placeholder="Email or Username" id="mailid" required="">
+                        </div>
+                        <div class="input-group two-groop">
+                            <span><i class="fa fa-key" aria-hidden="true"></i></span>
+                            <input type="Password" placeholder="Password" id="pass" required="">
+                        </div>
+                        <div class="form-row bottom">
+                            <div class="form-check">
+                                <input type="checkbox" id="remenber" name="remenber" value="remenber" checked>
+                                <label for="remenber"> Remember me?</label>
+                            </div>
+                            <a onclick="resetPasswordFunction()" class="forgot">Forgot password?</a>
+                        </div>
+                        <a onclick="LoginUser()" class="btn btn-primary btn-block" type="submit">Log In</a>
+                    </form>
+                
+                    <p class="account">Don't have an account? <a href="Signup.html">Register</a></p>
+                    <p class="account">Are you a Client? <a href="../login page/Signup.html">Register</a></p>
+                </div>
+            </div>
+            <!-- //main content -->
+        </div>
+        <!-- //container -->
+
+        <!-- footer -->
+        <div class="footer" style="margin-bottom: -20px;">
+            <p>&copy; 2021 NEXUS. All Rights Reserved | Design by team <a href="../index.html#teams" target="blank">NEXUS</a></p>
+        </div>
+        <!-- footer -->
+    </div>
+
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+<script>
+      var firebaseConfig = {
+    apiKey: "AIzaSyBfolJh1jLX-HV5CHALpcfBWGoqaQmPpno",
+    authDomain: "jobhut-948da.firebaseapp.com",
+    projectId: "jobhut-948da",
+    storageBucket: "jobhut-948da.appspot.com",
+    messagingSenderId: "230503556312",
+    appId: "1:230503556312:web:351d8c69932dd2ae8723ad"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script>
+
+function LoginUser(){
+  var a;
+  var email=document.getElementById('mailid').value;
+  var password=document.getElementById('pass').value;
+  firebase.auth().signInWithEmailAndPassword(email,password).then(function(){
+   var id=firebase.auth().currentUser.uid;
+   localStorage.setItem('id',id);
+  }).catch(function(error){
+   var errorCode=error.code;
+   var errorMsg=error.message;
+   window.alert("Error : " +errorMsg)
+
+  });
+    var name1 = email.substring(0, email.lastIndexOf("@"));
+    firebase.database().ref('Manager/'+name1).on('value',function(snapshot){
+        a = snapshot.val().Status;
+    });
+    if(a === "Approved"){
+        window.location.replace('../Choice_Manager/index.html');
+    }
+    else{
+       window.alert('Please Wait!! Our Team is Verifying your Profile. Once Successful you can Login. Max. Verification Time :- 24 hours');
+       window.location.replace();
+    }
+ }
+
+const mailField = document.getElementById('mailid');
+const labels = document.getElementsByTagName('label');
+const resetPassword = document.getElementById('resetPassword');
+const successModal = document.querySelector('.success');
+const failureModal = document.querySelector('.failure');
+const auth = firebase.auth();
+
+
+ const resetPasswordFunction = () => {
+    const email = mailField.value;
+    if(!email)
+    {
+        window.alert("Please enter a registered email");
+    }
+    else
+    {
+        
+        auth.sendPasswordResetEmail(email).then(() => {
+    
+        window.alert('Password Reset Email Sent Successfully!');
+    
+    }).catch(function(error){
+      
+        window.alert("Please enter a registered email");
+    });
+    }
+    }
+</script>
+
+</html>

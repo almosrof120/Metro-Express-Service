@@ -1,0 +1,244 @@
+
+
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+$font-family-sans-serif-2: 'Poppins', sans-serif;
+$font-family-serif: 'Source Serif Pro', serif;
+
+
+
+body {
+	font-family: $font-family-sans-serif;
+	background-color: #fff;
+  font-weight: 300;
+}
+p {
+	font-weight: 300;
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: $font-family-sans-serif;
+}
+a {
+	transition: .3s all ease;
+	&, &:hover {
+		text-decoration: none!important;
+	}
+}
+.content {
+	padding: 7rem 0;
+}
+h2 {
+	font-size: 20px;
+}
+
+
+.custom-table {
+	min-width: 900px;
+	thead {
+
+		tr, th {
+      padding-bottom: 30px;
+			border-top: none;
+			border-bottom: none!important;
+      color: $black;
+		}
+	}
+	tbody {
+		th, td {
+			color: #777;
+			font-weight: 400;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      font-weight: 300;
+      border: none;
+      transition: .3s all ease;
+      small {
+        color: darken(#ccc, 10%);
+        font-weight: 300;
+      }
+     
+		}
+    tr {
+      transition: .3s all ease;
+      &:hover, &:focus {
+        td {
+        }
+      }
+      .name {
+        text-decoration: line-through;
+        position: relative;
+        display: inline-block;
+        &:before {
+          content: "";
+          height: 2px;
+          top: 50%;
+          position: absolute;
+          left: 0;
+          right: 0;
+          background: $red;
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+      &.active {
+        opacity: .4;
+        .name {
+          
+          &:before {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+	}
+  .td-box-wrap {
+    padding: 0;
+  }
+  .box {
+    background: $white;
+    border-radius: 4px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    td, th {
+      border: none!important;
+    }
+  }
+
+}
+
+
+
+.custom-control {
+  
+
+  &.ios-switch{
+    --color: #4cd964;
+    padding-left: 0;
+
+    .ios-switch-control-input{
+      display: none;
+
+      &:active~.ios-switch-control-indicator{
+        &::after{
+          width: 20px;
+        }
+      }
+
+      &:checked{
+        ~.ios-switch-control-indicator{
+          border: 10px solid var(--color);
+
+          &::after{
+            top: -8px;
+            left: 4px;
+          }
+        }
+
+        &:active~.ios-switch-control-indicator{
+          &::after{
+            left: 0px;
+          }
+        }
+      }
+      &:disabled~.ios-switch-control-indicator{
+        opacity: .4;
+      }
+    }
+    .ios-switch-control-indicator{
+      display: inline-block;
+      position: relative;
+      margin: 0 10px;
+      top: 4px;
+      width: 32px;
+      height: 20px;
+      background: #fff;
+      border-radius: 16px;
+      transition: .3s;
+      border: 2px solid #ddd;
+
+      &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 16px;
+        transition: .3s;
+        top: 0px;
+        left: 0px;
+        background: #fff;
+        box-shadow: 0 0 2px #aaa, 0 2px 5px #999;
+      }
+    }
+  }
+}
+
+/* Custom Checkbox */
+.control {
+  display: block;
+  position: relative;
+  margin-bottom: 25px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.control__indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border-radius: 4px;
+  border: 2px solid #ccc;
+  background: transparent;
+}
+.control--radio .control__indicator {
+  border-radius: 50%;
+}
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+  border: 2px solid $primary;
+}
+.control input:checked ~ .control__indicator {
+  border: 2px solid $primary;
+  background: $primary;
+}
+.control input:disabled ~ .control__indicator {
+  background: #e6e6e6;
+  opacity: 0.6;
+  pointer-events: none;
+  border: 2px solid #ccc;
+}
+.control__indicator:after {
+  font-family: 'icomoon';
+  content: '\e5ca';
+  position: absolute;
+  display: none;
+  
+}
+.control input:checked ~ .control__indicator:after {
+  display: block;
+  color: #fff;
+}
+.control--checkbox .control__indicator:after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+}
+.control--checkbox input:disabled ~ .control__indicator:after {
+  border-color: #7b7b7b;
+  
+}
+.control--checkbox input:disabled:checked ~ .control__indicator {
+  background-color: $primary;
+  opacity: .2;
+  border: 2px solid $primary;
+}

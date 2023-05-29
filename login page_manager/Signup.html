@@ -1,0 +1,105 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>SignUp - </title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <!-- //Meta tag Keywords -->
+    <link rel="icon" type="image/png" href="../logo.png"/>
+    <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <!--/Style-CSS -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <!--//Style-CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all">
+
+</head>
+
+<body>
+    <div class="w3l-signinform">
+        <!-- container -->
+        <div class="wrapper">
+            <!-- main content -->
+            <div class="w3l-form-info">
+                <div class="w3_info">
+                    <h1>Welcome</h1>
+                    <p class="sub-para"></p>
+                    <h2>Signup</h2>
+                    <form action="#" method="post">
+                        <div class="input-group">
+                            <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                            <input type="text" id="name" placeholder="Name" required="">
+                        </div>
+                        <div class="input-group">
+                            <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                            <input type="email" id="email" placeholder="Email or Username" required="">
+                        </div>
+                        <div class="input-group two-groop">
+                            <span><i class="fa fa-key" aria-hidden="true"></i></span>
+                            <input type="Password" id="password" placeholder="Password" required="">
+                        </div>
+                        <a onclick="RegisterUser()" class="btn btn-primary btn-block" type="submit">Sign-Up</a>
+                    </form>
+                
+                    <p class="account">Already have an account? <a href="login.html">Log In</a></p>
+                    <p class="account">Are you a Client? <a href="../login page/login.html">Log In</a></p>
+                </div>
+            </div>
+            <!-- //main content -->
+        </div>
+        <!-- //container -->
+        <!-- footer -->
+        <div class="footer" style="margin-bottom: -20px;">
+            <p>&copy; 2021 NEXUS. All Rights Reserved | Design by team <a href="../index.html#teams" target="blank">NEXUS</a></p>
+        </div>
+        <!-- footer -->
+    </div>
+
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+<script>
+      var firebaseConfig = {
+    apiKey: "AIzaSyBfolJh1jLX-HV5CHALpcfBWGoqaQmPpno",
+    authDomain: "jobhut-948da.firebaseapp.com",
+    projectId: "jobhut-948da",
+    storageBucket: "jobhut-948da.appspot.com",
+    messagingSenderId: "230503556312",
+    appId: "1:230503556312:web:351d8c69932dd2ae8723ad"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+    var status = "None";
+    function RegisterUser() {
+      var email=document.getElementById('email').value;
+      var password=document.getElementById('password').value;
+      user_name = document.getElementById('name').value;
+      firebase.auth().createUserWithEmailAndPassword(email,password).then(function(){
+       var id=firebase.auth().currentUser.uid;
+       localStorage.setItem('id',id);
+		   name1 = email.substring(0, email.lastIndexOf("@"));
+		   firebase.database().ref('Manager/'+name1).set({
+            Name: user_name,
+            Status: status
+          });
+      window.alert('Successfully Signup! Now Login');
+      }).catch(function(error){
+   
+       var errorcode=error.code;
+       var errormsg=error.message;
+       window.alert("Error : " +errorMsg)
+       
+      });
+}
+</script>
+
+</html>
