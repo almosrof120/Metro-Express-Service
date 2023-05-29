@@ -7,7 +7,7 @@ Metro Facilities During Journey
 
 We Encourager present before you,<b>"Metro-Express Services"</b>.
 
-<img width=40% src="Screenshots/logo.png"> &ensp;
+<img width=40% src="logo.png"> &ensp;
 
 
 ## Our Inspirarion
