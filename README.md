@@ -20,7 +20,7 @@ Well not any more because we are bringing all this facilities with top class ser
 # WHAT YOU WILL EXPERIENCE ?
 Your destination is our Priority with the Excellence
 
-Our website is more of a Indian Railways oriented.We provide catering ,medication,coolie all at one place .We provide you we the top services according to your location .We provide you the best services at best price. Our website is easy to use.
+Our website is more of a BD Railways oriented.We provide catering ,medication,coolie all at one place .We provide you we the top services according to your location .We provide you the best services at best price. Our website is easy to use.
 
 
 
