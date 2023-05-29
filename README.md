@@ -27,7 +27,7 @@ Our website is more of a BD Railways oriented.We provide catering ,medication,co
 
 ## Tech Stack
 
-- eJS, CSS, Bootstrap, HTML, SCSS
+- JS, CSS, Bootstrap, HTML, SCSS, php
 
 - Firebase Authentication and Database.
 
