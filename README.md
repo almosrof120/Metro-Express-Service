@@ -1,7 +1,7 @@
 # Metro-Express-Services
 Metro Facilities During Journey
 
-# Submission by Team ENCOURAGER for Final Project Submission
+# Submission by Team Encourager for final project submission
 
 <h2 align= "left"><b>Our Product</b></h2>
 
